@@ -5,9 +5,8 @@ import java.util.Scanner;
 public class HighScore {
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] arg){
-
-
-        System.out.println(determineWinner("Slytherin:Gryffindor|55:29"));
+        String getUserInput = askString("Whats the score? (format: team1:team2|score1:score2)");
+        System.out.println(determineWinner(getUserInput));
 
     }
 
@@ -25,7 +24,9 @@ public class HighScore {
         int homeScore = Integer.parseInt(scores[0]);
         int visitorScore = Integer.parseInt(scores[1]);
         int winingTeamScore = (homeScore > visitorScore ? homeScore : visitorScore );
-        String winner = (homeScore > visitorScore ? homeTeam + " Wins!" : visitorTeam + " Wins!" + "With a score of " + winingTeamScore);
+        int losingTeamScore = (homeScore < visitorScore ? homeScore : visitorScore );
+        int pointDifference = winingTeamScore - losingTeamScore;
+        String winner = (homeScore > visitorScore ? homeTeam + " Wins with score of " + winingTeamScore + "\n Point difference: " + pointDifference : visitorTeam + " Wins with a score of " + winingTeamScore + "\n with a point difference of: " + pointDifference);
 
 
 
